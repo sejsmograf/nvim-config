@@ -36,7 +36,7 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -508,6 +508,7 @@ require("lazy").setup({
 		opts = {
 			notify_on_error = false,
 			format_on_save = {
+				-- These options will be passed to conform.format()
 				timeout_ms = 500,
 				lsp_fallback = true,
 			},
@@ -518,7 +519,7 @@ require("lazy").setup({
 				--
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
-				-- javascript = { { "prettierd", "prettier" } },
+				javascript = { "prettier" },
 			},
 		},
 	},
@@ -646,6 +647,7 @@ require("lazy").setup({
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+
 			vim.cmd.colorscheme("sonokai")
 
 			-- You can configure highlights by doing something like
