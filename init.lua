@@ -1,26 +1,3 @@
---[[
-
-=====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
-=====================================================================
-========                                    .-----.          ========
-========         .----------------------.   | === |          ========
-========         |.-""""""""""""""""""-.|   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||   KICKSTART.NVIM   ||   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||                    ||   |-----|          ========
-========         ||:Tutor              ||   |:::::|          ========
-========         |'-..................-'|   |____o|          ========
-========         `"")----------------(""`   ___________      ========
-========        /::::::::::|  |::::::::::\  \ no mouse \     ========
-========       /:::========|  |==hjkl==:::\  \ required \    ========
-========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
-========                                                     ========
-=====================================================================
-=====================================================================
---]]
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -29,13 +6,9 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.mouse = "a"
-
 vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
 -- vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
@@ -71,9 +44,6 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 
 vim.opt.scrolloff = 10
-
--- [[ Basic Keymaps ]]
---  See `:help vim.keymap.set()`
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
@@ -455,12 +425,12 @@ require("lazy").setup({
 								checkThirdParty = false,
 								-- Tells lua_ls where to find all the Lua files that you have loaded
 								-- for your neovim configuration.
-								library = {
-									"${3rd}/luv/library",
-									unpack(vim.api.nvim_get_runtime_file("", true)),
-								},
+								-- library = {
+								-- 	"${3rd}/luv/library",
+								-- 	unpack(vim.api.nvim_get_runtime_file("", true)),
+								-- },
 								-- If lua_ls is really slow on your computer, you can try this instead:
-								-- library = { vim.env.VIMRUNTIME },
+								library = { vim.env.VIMRUNTIME },
 							},
 							completion = {
 								callSnippet = "Replace",
@@ -509,12 +479,11 @@ require("lazy").setup({
 			notify_on_error = false,
 			format_on_save = {
 				-- These options will be passed to conform.format()
-				timeout_ms = 500,
+				-- timeout_ms = 500,
 				lsp_fallback = true,
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
-				-- Conform can also run multiple formatters sequentially
 				python = { "black" },
 				--
 				-- You can use a sub-list to tell conform to run *until* a formatter
@@ -637,13 +606,11 @@ require("lazy").setup({
 	},
 
 	{
-		"sainnhe/everforest",
+		"ellisonleo/gruvbox.nvim",
 		priority = 1000, -- make sure to load this before all the other start plugins
 		init = function()
-			-- vim.cmd.colorscheme("catppuccin-macchiato")
-			vim.cmd.colorscheme("everforest")
-			-- You can configure highlights by doing something like
-			vim.cmd.hi("Comment gui=none")
+			vim.o.background = "light"
+			vim.cmd.colorscheme("gruvbox")
 		end,
 	},
 
@@ -700,6 +667,10 @@ require("lazy").setup({
 			--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
 			--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 		end,
+	},
+
+	{
+		dir = "/home/tomek/repos/cmake.nvim",
 	},
 
 	{
@@ -772,3 +743,4 @@ require("toggleterm").setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
